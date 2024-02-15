@@ -1,4 +1,5 @@
 using ApiFacturas.DAL;
+using ApiFacturas.Middleware;
 using ApiFacturas.Models.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.MapControllers();
 
