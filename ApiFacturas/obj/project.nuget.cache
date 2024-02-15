@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "+6fivEzmg23/6dcXlU/EziGEb6kwqnLqFwpryuCoRTe0Y5j4HZ/G4gbo11Bb8nCJ39RwxmEZS9Scic02kXvPsQ==",
+  "dgSpecHash": "KM29bdxVP4xQ6YKJzgi0gjnYGpCbx/TddPL1USToMEKBw900V6Fv5EUbqsLK0Q8yH5HDAvEGrAQIQegKagDI8w==",
   "success": true,
   "projectFilePath": "C:\\Users\\intro\\source\\repos\\ApiFacturas\\ApiFacturas\\ApiFacturas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\intro\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\intro\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\intro\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
     "C:\\Users\\intro\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\intro\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\intro\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
