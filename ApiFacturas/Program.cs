@@ -1,3 +1,4 @@
+using ApiFacturas.DAL;
 using ApiFacturas.Models.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IFacturaRepository, FacturaRepository>();
+builder.Services.AddScoped<IDBConnection, DBConnection>();
 
 var app = builder.Build();
 

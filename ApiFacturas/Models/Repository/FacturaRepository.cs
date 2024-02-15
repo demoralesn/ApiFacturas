@@ -1,52 +1,50 @@
 ﻿using Newtonsoft.Json;
 using System.Text.Json.Nodes;
+using ApiFacturas.DAL;
 
 namespace ApiFacturas.Models.Repository
 {
     public class FacturaRepository : IFacturaRepository
     {
-        public FacturaRepository() { }
+        private readonly IDBConnection _dbConnection;
+        
+        public FacturaRepository(IDBConnection dbConnection) { 
+            _dbConnection = dbConnection;
+        }
 
         public IEnumerable<Factura> ObtenerTodas()
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
             return facturaList;
         }
 
         public Factura ObtenerPorRutComprador(double rut)
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
             Factura? facturaEncontrada = facturaList.FirstOrDefault(x => x.RUTComprador == rut);
 
             return facturaEncontrada;
         }
 
-        public Factura ObtenerPorComunaComprador(double id)
+        public IEnumerable<Factura> ObtenerPorComunaComprador(double id)
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
-            Factura? facturaEncontrada = facturaList.FirstOrDefault(x => x.ComunaComprador == id);
-
-            return facturaEncontrada;
+            return facturaList.Where(x => x.ComunaComprador == id);
         }
 
         public IEnumerable<Factura> ObtenerAgrupadasPorComuna()
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
             return facturaList.GroupBy(x => x.ComunaComprador).SelectMany(grp => grp).ToList();
         }
 
         public double ObtenerMayorComprador()
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
             var rutMayorComprador = facturaList
             .GroupBy(x => x.RUTComprador)
@@ -59,8 +57,7 @@ namespace ApiFacturas.Models.Repository
 
         public IEnumerable<Comprador> ObtenerTotalComprasComprador()
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
             List<Comprador> compradorVentas = new List<Comprador>();
 
@@ -89,8 +86,7 @@ namespace ApiFacturas.Models.Repository
 
         public IEnumerable<FacturaSimple> ObtenerTotalFacturas()
         {
-            var jsonString = File.ReadAllText("JsonEjemplo.json");
-            IEnumerable<Factura>? facturaList = JsonConvert.DeserializeObject<List<Factura>>(jsonString);
+            IEnumerable<Factura>? facturaList = _dbConnection.GetConnection();
 
             List<FacturaSimple> totalFacturas = new List<FacturaSimple>();
 

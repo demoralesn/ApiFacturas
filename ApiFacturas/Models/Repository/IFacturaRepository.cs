@@ -5,7 +5,7 @@
         IEnumerable<Factura> ObtenerTodas();
         Factura ObtenerPorRutComprador(double rut);
 
-        Factura ObtenerPorComunaComprador(double id);
+        IEnumerable<Factura> ObtenerPorComunaComprador(double id);
         IEnumerable<Factura> ObtenerAgrupadasPorComuna();
 
         double ObtenerMayorComprador();

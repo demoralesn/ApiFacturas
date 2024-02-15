@@ -50,7 +50,14 @@ namespace ApiFacturas.Controllers
             {
                 var facturaEncontrada = _facturaRepository.ObtenerPorRutComprador(rut);
 
-                return Ok(facturaEncontrada);
+                if (facturaEncontrada != null)
+                {
+                    return Ok(facturaEncontrada);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
@@ -95,7 +102,14 @@ namespace ApiFacturas.Controllers
             {
                 var facturaEncontrada = _facturaRepository.ObtenerPorComunaComprador(id);
 
-                return Ok(facturaEncontrada);
+                if (facturaEncontrada != null)
+                {
+                    return Ok(facturaEncontrada);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
